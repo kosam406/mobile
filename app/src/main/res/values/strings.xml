@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Maliki Msako</string>
+    <string name="action_show_list">Show List</string>
+    <string name="welcome_message">Welcome to Maliki Msako App!</string>
+    <string name="instruction_message">Open the menu to see the list.</string>
+</resources>
