@@ -3,7 +3,9 @@ package com.example.malikimsako;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
+import java.util.List;
 
 public class ListActivity extends AppCompatActivity {
 
@@ -14,9 +16,25 @@ public class ListActivity extends AppCompatActivity {
 
         ListView listView = findViewById(R.id.listView);
         
-        String[] data = {"Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6", "Item 7", "Item 8"};
+        List<SpeedRecord> records = DataManager.getInstance().getRecords();
         
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, data);
+        // Add a header or simple summary if needed
+        if (records.isEmpty()) {
+            // You could show a toast or a placeholder
+        }
+
+        ArrayAdapter<SpeedRecord> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, records);
         listView.setAdapter(adapter);
+        
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("Room Speed Map");
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
     }
 }
